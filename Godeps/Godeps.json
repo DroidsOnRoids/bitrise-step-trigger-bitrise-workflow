@@ -1,0 +1,27 @@
+{
+	"ImportPath": "github.com/DroidsOnRoids/bitrise-step-trigger-bitrise-workflow",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/bitrise-io/go-utils/colorstring",
+			"Rev": "961320f9011cedf55e1da0578949bf63450a96c0"
+		},
+		{
+			"ImportPath": "github.com/bitrise-io/go-utils/command",
+			"Rev": "961320f9011cedf55e1da0578949bf63450a96c0"
+		},
+		{
+			"ImportPath": "github.com/bitrise-io/go-utils/errorutil",
+			"Rev": "961320f9011cedf55e1da0578949bf63450a96c0"
+		},
+		{
+			"ImportPath": "github.com/bitrise-io/go-utils/log",
+			"Rev": "961320f9011cedf55e1da0578949bf63450a96c0"
+		},
+		{
+			"ImportPath": "github.com/bitrise-io/go-utils/pathutil",
+			"Rev": "961320f9011cedf55e1da0578949bf63450a96c0"
+		}
+	]
+}
