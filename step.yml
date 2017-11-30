@@ -12,13 +12,13 @@ title: |-
 summary: |
   Triggers a workflow on bitrise.io with specified parameters.
 description: |
-  The main purpose of this step is to trigger another workflow of the same app with the same parameters to achieve
-  multiple workflows start on the same trigger. Optionally in parallel and with different necessity of checks.
+  The main purpose of this step is to trigger another workflow process of the same app, with the same build parameters, to achieve
+  multiple workflows that all start on the same trigger. Optionally, we would like to do this in parallel and with different necessity of checks.
 
-  For example: unit tests as required PR status check and mutation tests as not required.
+  For example: unit tests require a PR status check but mutation tests do not.
   However you can also provide modified build parameters, different Bitrise app and/or choose the same workflow.
 
-  All the parameters except workflow ID have default values equal to those in a current build. Workflow ID needs to be specified explicitly
+  All the parameters except the workflow ID have default values equal to those in a current build. The workflow ID needs to be specified explicitly
   to avoid accidental infinite recursive triggers of the same build.
   You can use `$BITRISE_TRIGGERED_WORKFLOW_ID` environment variable to get current workflow ID.
 
@@ -56,7 +56,7 @@ inputs:
   - branch: $BITRISE_GIT_BRANCH
     opts:
       title: "(Source) Branch to build"
-      summary: The (Source) Branch to build. In case of a standard git commit this is the branch of the commit. In case of a Pull Request build this is the source branch, the one the PR was started from.
+      summary: The (Source) Branch to build. In the case of a standard git commit, this is the branch of the commit. In case of a Pull Request build this is the source branch, the one the PR was started from.
       is_expand: true
       is_required: false
   - tag: $BITRISE_GIT_TAG
@@ -77,14 +77,14 @@ inputs:
   - workflow_id:
     opts:
       title: "Workflow ID"
-      summary: Force the use of the specified workflow ID. If empty then the workflow will be selected based on the project's [Trigger Map](http://devcenter.bitrise.io/webhooks/trigger-map/) config.
+      summary: Force the use of the specified workflow ID. If empty, then the workflow will be selected, based on the project's [Trigger Map](http://devcenter.bitrise.io/webhooks/trigger-map/) config.
       is_expand: true
       is_required: true
   - branch_dest: $BITRISEIO_GIT_BRANCH_DEST
     opts:
       title: "Pull request destination branch"
       summary: |
-        Used only in case of Pull Request builds: the destination/target branch of the Pull Request, the one the PR will be merged into.
+        Used only in the case of Pull Request builds: this is the destination/target branch of the Pull Request, and the one the PR will be merged into.
       is_expand: true
       is_required: false
   - pull_request_id: $PULL_REQUEST_ID
@@ -96,19 +96,19 @@ inputs:
   - pull_request_repository_url: $BITRISEIO_PULL_REQUEST_REPOSITORY_URL
     opts:
       title: "Pull Request repository URL"
-      summary: Repository URL from where the Pull Request is sent. E.g. if it's created from a fork this should be the fork's URL.
+      summary: The repository URL from where the Pull Request is sent. E.g. if it's created from a fork this should be the fork's URL.
       is_expand: true
       is_required: false
   - pull_request_merge_branch: $BITRISEIO_PULL_REQUEST_MERGE_BRANCH
     opts:
       title: "Pull Request pre-merge branch"
-      summary: The pre-merge branch, if the source code hosting system supports & provides the pre-merged state of the PR on a special "merge branch" (ref). Probably only GitHub supports this.
+      summary: The pre-merge branch: if the source code hosting system supports & provides the pre-merged state of the PR on a special "merge branch" (ref). Probably only GitHub supports this.
       is_expand: true
       is_required: false
   - pull_request_head_branch: $BITRISEIO_PULL_REQUEST_HEAD_BRANCH
     opts:
       title: "Pull Request head branch"
-      summary: The Pull Request's "head branch" (refs/) if the source code hosting system supports & provides this. This special git ref should point to the source of the Pull Request. Supported by GitHub and GitLab.
+      summary: The Pull Request's "head branch" (refs/), if the source code hosting system supports & provides this. This special git ref should point to the source of the Pull Request. Supported by GitHub and GitLab.
       is_expand: true
       is_required: false
 
