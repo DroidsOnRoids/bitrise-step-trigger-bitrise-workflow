@@ -102,7 +102,8 @@ inputs:
   - pull_request_merge_branch: $BITRISEIO_PULL_REQUEST_MERGE_BRANCH
     opts:
       title: "Pull Request pre-merge branch"
-      summary: The pre-merge branch: if the source code hosting system supports & provides the pre-merged state of the PR on a special "merge branch" (ref). Probably only GitHub supports this.
+      summary: |
+        The pre-merge branch: if the source code hosting system supports & provides the pre-merged state of the PR on a special "merge branch" (ref). Probably only GitHub supports this.
       is_expand: true
       is_required: false
   - pull_request_head_branch: $BITRISEIO_PULL_REQUEST_HEAD_BRANCH
