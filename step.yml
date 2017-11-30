@@ -79,7 +79,7 @@ inputs:
       title: "Workflow ID"
       summary: Force the use of the specified workflow ID. If empty, then the workflow will be selected, based on the project's [Trigger Map](http://devcenter.bitrise.io/webhooks/trigger-map/) config.
       is_expand: true
-      is_required: true
+      is_required: false
   - branch_dest: $BITRISEIO_GIT_BRANCH_DEST
     opts:
       title: "Pull request destination branch"
