@@ -116,21 +116,21 @@ inputs:
 outputs:
   - TRIGGERED_BUILD_SLUG:
     opts:
-      title: "Triggered build slug"
+      title: ""
       summary: ""
-      description: ""
+      description: "Triggered build slug"
   - TRIGGERED_BUILD_NUMBER:
     opts:
-      title: "Triggered build number"
+      title: ""
       summary: ""
-      description: ""
+      description: "Triggered build number"
   - TRIGGERED_BUILD_URL:
     opts:
-      title: "Triggered build URL"
+      title: ""
       summary: ""
-      description: ""
+      description: "Triggered build URL"
   - TRIGGERED_WORKFLOW_ID:
     opts:
-      title: "Triggered workflow ID"
+      title: ""
       summary: ""
-      description: ""
+      description: "Triggered workflow ID"
