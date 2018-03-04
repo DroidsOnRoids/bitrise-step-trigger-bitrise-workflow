@@ -6,9 +6,10 @@ app:
   - API_TOKEN: $API_TOKEN
   - BITRISE_APP_SLUG: $BITRISE_APP_SLUG
   - WORKFLOW_ID: $WORKFLOW_ID
+  - EXPORTED_ENVIRONMENT: $EXPORTED_ENVIRONMENT
   - BITRISE_STEP_ID: trigger-bitrise-workflow
-  - BITRISE_STEP_VERSION: "0.0.1"
-  - BITRISE_STEP_GIT_CLONE_URL: https://github.com/DroidsOnRoids/bitrise-step-trigger-bitrise-workflow
+  - BITRISE_STEP_VERSION: "0.0.2"
+  - BITRISE_STEP_GIT_CLONE_URL: https://github.com/DroidsOnRoids/bitrise-step-trigger-bitrise-workflow.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
 
 workflows:
@@ -64,13 +65,14 @@ workflows:
         inputs:
         - workflow_id: $WORKFLOW_ID
         - api_token: $API_TOKEN
+        - exported_environment_variable_names: $EXPORTED_ENVIRONMENT
     - script:
         title: Step Test skip info
         run_if: '{{enveq "BITRISE_APP_SLUG" ""}}'
         inputs:
         - content: |-
             #!/usr/bin/env bash
-            echo "Step test skipped due to missing JIRA credentials"
+            echo "Step test skipped due to missing App slug"
     - script:
         inputs:
         - content: |

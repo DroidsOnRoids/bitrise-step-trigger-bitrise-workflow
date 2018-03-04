@@ -112,6 +112,13 @@ inputs:
       summary: The Pull Request's "head branch" (refs/), if the source code hosting system supports & provides this. This special git ref should point to the source of the Pull Request. Supported by GitHub and GitLab.
       is_expand: true
       is_required: false
+  - exported_environment_variable_names:
+    opts:
+      title: "Names of environment variables to export"
+      summary: |
+        `|` separated names of environment variables to export from current environment to triggered workflow, without leading `$`.
+      is_expand: true
+      is_required: false
 
 outputs:
   - TRIGGERED_BUILD_SLUG:
