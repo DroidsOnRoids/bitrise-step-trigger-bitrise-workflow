@@ -18,7 +18,7 @@ func createExportedEnvironment(variableNames string) []EnvironmentVariableModel 
 
 	for _, environmentVariableName := range environmentVariableNames {
 		environments = append(environments, EnvironmentVariableModel{
-			MappedTo:"",
+			MappedTo:environmentVariableName,
 			Value:os.Getenv(environmentVariableName),
 		})
 	}

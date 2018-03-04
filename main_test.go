@@ -8,26 +8,26 @@ import (
 
 func TestRetrieveExportableEnvironmentSingleLength(t *testing.T) {
 	environments := createExportedEnvironment("HOME")
-	require.Equal(t, len(environments), 1)
+	require.Equal(t, 1, len(environments))
 }
 
 func TestRetrieveExportableEnvironmentMultipleLength(t *testing.T) {
 	environments := createExportedEnvironment("HOME|USER")
-	require.Equal(t, len(environments), 2)
+	require.Equal(t, 2, len(environments))
 }
 
 func TestRetrieveExportableEnvironmentValues(t *testing.T) {
 	environments := createExportedEnvironment("HOME|USER")
-	require.Equal(t, environments[0].MappedTo, "HOME")
-	require.Equal(t, environments[0].Value, os.Getenv("HOME"))
-	require.Equal(t, environments[1].MappedTo, "USER")
-	require.Equal(t, environments[1].Value, os.Getenv("USER"))
+	require.Equal(t, "HOME", environments[0].MappedTo)
+	require.Equal(t, os.Getenv("HOME"), environments[0].Value)
+	require.Equal(t, "USER", environments[1].MappedTo)
+	require.Equal(t, os.Getenv("USER"), environments[1].Value)
 }
 
 func TestRetrieveExportableEnvironmentEmptyValue(t *testing.T) {
 	environments := createExportedEnvironment("dummy")
-	require.Equal(t, environments[0].MappedTo, "dummy")
-	require.Equal(t, environments[0].Value, "")
+	require.Equal(t, "dummy", environments[0].MappedTo)
+	require.Equal(t, "", environments[0].Value)
 }
 
 func TestSplitPipeSeparatedStringArrayEmpty(t *testing.T) {
@@ -38,8 +38,8 @@ func TestSplitPipeSeparatedStringArrayEmpty(t *testing.T) {
 func TestSplitPipeSeparatedStringArrayNonEmpty(t *testing.T) {
 	environment := splitPipeSeparatedStringArray("a|b")
 	require.Equal(t, 2, len(environment))
-	require.Equal(t, environment[0], "a")
-	require.Equal(t, environment[1], "b")
+	require.Equal(t, "a", environment[0])
+	require.Equal(t, "b", environment[1])
 }
 
 func TestValidateConfigsNoSlug(t *testing.T) {
