@@ -12,10 +12,10 @@ import (
 )
 
 const (
-	triggeredBuildSlug = "TRIGGERED_BUILD_SLUG"
+	triggeredBuildSlug   = "TRIGGERED_BUILD_SLUG"
 	triggeredBuildNumber = "TRIGGERED_BUILD_NUMBER"
-	triggeredBuildURL = "TRIGGERED_BUILD_URL"
-	triggeredWorkflowID = "TRIGGERED_WORKFLOW_ID"
+	triggeredBuildURL    = "TRIGGERED_BUILD_URL"
+	triggeredWorkflowID  = "TRIGGERED_WORKFLOW_ID"
 )
 
 func main() {
@@ -80,21 +80,21 @@ func main() {
 
 func createRequestBodyFromConfigs(configs ConfigsModel) ([]byte, error) {
 	requestModel := RequestModel{
-		HookInfo:HookInfoModel{
-			Type:"bitrise",
-			APIToken:configs.APIToken,
+		HookInfo: HookInfoModel{
+			Type:     "bitrise",
+			APIToken: configs.APIToken,
 		},
-		BuildParams:BuildParamsModel{
-			Branch:configs.Branch,
-			Tag:configs.Tag,
-			CommitHash:configs.CommitHash,
-			CommitMessage:configs.CommitMessage,
-			WorkflowID:configs.WorkflowID,
-			BranchDest:configs.BranchDest,
-			PullRequestID:configs.PullRequestID,
-			PullRequestRepositoryURL:configs.PullRequestRepositoryURL,
-			PullRequestHeadBranch:configs.PullRequestHeadBranch,
-			Environments:createExportedEnvironment(configs.ExportedVariableNames),
+		BuildParams: BuildParamsModel{
+			Branch:                   configs.Branch,
+			Tag:                      configs.Tag,
+			CommitHash:               configs.CommitHash,
+			CommitMessage:            configs.CommitMessage,
+			WorkflowID:               configs.WorkflowID,
+			BranchDest:               configs.BranchDest,
+			PullRequestID:            configs.PullRequestID,
+			PullRequestRepositoryURL: configs.PullRequestRepositoryURL,
+			PullRequestHeadBranch:    configs.PullRequestHeadBranch,
+			Environments:             createExportedEnvironment(configs.ExportedVariableNames),
 		},
 	}
 
@@ -104,6 +104,9 @@ func createRequestBodyFromConfigs(configs ConfigsModel) ([]byte, error) {
 func createRequest(appSlug string, body []byte) (*http.Request, error) {
 	requestURL := fmt.Sprintf("https://www.bitrise.io/app/%s/build/start.json", appSlug)
 	request, err := http.NewRequest("POST", requestURL, bytes.NewBuffer(body))
+	if request != nil {
+		request.Header.Add("Content-Type", "application/json")
+	}
 	return request, err
 }
 
