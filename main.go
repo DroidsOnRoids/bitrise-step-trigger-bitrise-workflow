@@ -102,7 +102,7 @@ func createRequestBodyFromConfigs(configs ConfigsModel) ([]byte, error) {
 }
 
 func createRequest(appSlug string, body []byte) (*http.Request, error) {
-	requestURL := fmt.Sprintf("https://www.bitrise.io/app/%s/build/start.json", appSlug)
+	requestURL := fmt.Sprintf("https://app.bitrise.io/app/%s/build/start.json", appSlug)
 	request, err := http.NewRequest("POST", requestURL, bytes.NewBuffer(body))
 	if request != nil {
 		request.Header.Add("Content-Type", "application/json")
