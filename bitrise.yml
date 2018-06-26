@@ -8,7 +8,7 @@ app:
   - WORKFLOW_ID: $WORKFLOW_ID
   - EXPORTED_ENVIRONMENT: $EXPORTED_ENVIRONMENT
   - BITRISE_STEP_ID: trigger-bitrise-workflow
-  - BITRISE_STEP_VERSION: "0.0.3"
+  - BITRISE_STEP_VERSION: "0.0.4"
   - BITRISE_STEP_GIT_CLONE_URL: https://github.com/DroidsOnRoids/bitrise-step-trigger-bitrise-workflow.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
   - BITRISE_GO_PACKAGES: github.com/DroidsOnRoids/bitrise-step-trigger-bitrise-workflow
