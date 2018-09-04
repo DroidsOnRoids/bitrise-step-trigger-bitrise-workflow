@@ -53,6 +53,7 @@ inputs:
       summary: Build trigger API Token. You can view and regenerate your App's API Token on the `Code` tab of the app.
       is_expand: true
       is_required: true
+      is_sensitive: true
   - branch: $BITRISE_GIT_BRANCH
     opts:
       title: "(Source) Branch to build"
