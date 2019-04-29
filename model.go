@@ -1,6 +1,5 @@
 package main
 
-
 // ConfigsModel ...
 type ConfigsModel struct {
 	AppSlug                  string
@@ -16,11 +15,13 @@ type ConfigsModel struct {
 	PullRequestMergeBranch   string
 	PullRequestHeadBranch    string
 	ExportedVariableNames    string
+	BranchRepoOwner          string
+	BranchDestRepoOwner      string
 }
 
 // RequestModel ...
 type RequestModel struct {
-	HookInfo    HookInfoModel `json:"hook_info"`
+	HookInfo    HookInfoModel    `json:"hook_info"`
 	BuildParams BuildParamsModel `json:"build_params"`
 }
 
@@ -32,24 +33,26 @@ type HookInfoModel struct {
 
 // BuildParamsModel ...
 type BuildParamsModel struct {
-	Branch                   string `json:"branch"`
-	Tag                      string `json:"tag"`
-	CommitHash               string `json:"commit_hash"`
-	CommitMessage            string `json:"commit_message"`
-	WorkflowID               string `json:"workflow_id"`
-	BranchDest               string `json:"branch_dest"`
-	PullRequestID            string `json:"pull_request_id"`
-	PullRequestRepositoryURL string `json:"pull_request_repository_url"`
-	PullRequestMergeBranch   string `json:"pull_request_merge_branch"`
-	PullRequestHeadBranch    string `json:"pull_request_head_branch"`
+	Branch                   string                     `json:"branch"`
+	Tag                      string                     `json:"tag"`
+	CommitHash               string                     `json:"commit_hash"`
+	CommitMessage            string                     `json:"commit_message"`
+	WorkflowID               string                     `json:"workflow_id"`
+	BranchDest               string                     `json:"branch_dest"`
+	PullRequestID            string                     `json:"pull_request_id"`
+	PullRequestRepositoryURL string                     `json:"pull_request_repository_url"`
+	PullRequestMergeBranch   string                     `json:"pull_request_merge_branch"`
+	PullRequestHeadBranch    string                     `json:"pull_request_head_branch"`
 	Environments             []EnvironmentVariableModel `json:"environments"`
+	BranchDestRepoOwner      string                     `json:"branch_dest_repo_owner"`
+	BranchRepoOwner          string                     `json:"branch_repo_owner"`
 }
 
 // EnvironmentVariableModel ...
 type EnvironmentVariableModel struct {
 	MappedTo string `json:"mapped_to"`
 	Value    string `json:"value"`
-	IsExpand bool `json:"is_expand"`
+	IsExpand bool   `json:"is_expand"`
 }
 
 // ResponseModel ...
@@ -57,7 +60,7 @@ type ResponseModel struct {
 	Status            string `json:"message"`
 	Message           string `json:"status"`
 	BuildSlug         string `json:"build_slug"`
-	BuildNumber       int `json:"build_number"`
+	BuildNumber       int    `json:"build_number"`
 	BuildURL          string `json:"build_url"`
 	TriggeredWorkflow string `json:"triggered_workflow"`
 }
