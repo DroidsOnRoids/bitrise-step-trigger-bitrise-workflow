@@ -120,6 +120,18 @@ inputs:
         `|` separated names of environment variables to export from current environment to triggered workflow, without leading `$`.
       is_expand: true
       is_required: false
+  - branch_repo_owner:
+    opts:
+      title: "Pull Request source repo owner"
+      summary: The Pull Request's source repo owner login
+      is_expand: true
+      is_required: false
+  - branch_dest_repo_owner:
+    opts:
+      title: "Pull Request destination repo owner"
+      summary: The Pull Request's destination repo owner login
+      is_expand: true
+      is_required: false
 
 outputs:
   - TRIGGERED_BUILD_SLUG:

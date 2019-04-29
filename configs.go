@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
-	"fmt"
-	"strings"
 	"errors"
+	"fmt"
 	"github.com/bitrise-io/go-utils/log"
+	"os"
+	"strings"
 )
 
 func createConfigsModelFromEnvs() ConfigsModel {
@@ -23,6 +23,8 @@ func createConfigsModelFromEnvs() ConfigsModel {
 		PullRequestMergeBranch:   os.Getenv("pull_request_merge_branch"),
 		PullRequestHeadBranch:    os.Getenv("pull_request_head_branch"),
 		ExportedVariableNames:    os.Getenv("exported_environment_variable_names"),
+		BranchRepoOwner:          os.Getenv("branch_repo_owner"),
+		BranchDestRepoOwner:      os.Getenv("branch_dest_repo_owner"),
 	}
 }
 
@@ -42,6 +44,8 @@ func (configs ConfigsModel) dump() {
 	log.Printf(" - PullRequestMergeBranch: %s", configs.PullRequestMergeBranch)
 	log.Printf(" - PullRequestHeadBranch: %s", configs.PullRequestHeadBranch)
 	log.Printf(" - ExportedVariableNames: %s", configs.ExportedVariableNames)
+	log.Printf(" - BranchRepoOwner: %s", configs.BranchRepoOwner)
+	log.Printf(" - BranchDestRepoOwner: %s", configs.BranchDestRepoOwner)
 }
 
 func (configs ConfigsModel) validate() error {

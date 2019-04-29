@@ -1,13 +1,13 @@
 package main
 
 import (
-	"os"
-	"github.com/bitrise-io/go-utils/log"
-	"fmt"
-	"encoding/json"
-	"net/http"
 	"bytes"
+	"encoding/json"
+	"fmt"
+	"github.com/bitrise-io/go-utils/log"
 	"io/ioutil"
+	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -95,6 +95,8 @@ func createRequestBodyFromConfigs(configs ConfigsModel) ([]byte, error) {
 			PullRequestRepositoryURL: configs.PullRequestRepositoryURL,
 			PullRequestHeadBranch:    configs.PullRequestHeadBranch,
 			Environments:             createExportedEnvironment(configs.ExportedVariableNames),
+			BranchRepoOwner:          configs.BranchRepoOwner,
+			BranchDestRepoOwner:      configs.BranchDestRepoOwner,
 		},
 	}
 
