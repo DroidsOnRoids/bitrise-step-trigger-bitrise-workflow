@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/bitrise-io/go-utils/log"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
+
+	"github.com/bitrise-io/go-utils/log"
 )
 
 const (
@@ -93,6 +94,7 @@ func createRequestBodyFromConfigs(configs ConfigsModel) ([]byte, error) {
 			BranchDest:               configs.BranchDest,
 			PullRequestID:            configs.PullRequestID,
 			PullRequestRepositoryURL: configs.PullRequestRepositoryURL,
+			PullRequestMergeBranch:   configs.PullRequestMergeBranch,
 			PullRequestHeadBranch:    configs.PullRequestHeadBranch,
 			Environments:             createExportedEnvironment(configs.ExportedVariableNames),
 			BranchRepoOwner:          configs.BranchRepoOwner,
