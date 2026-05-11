@@ -57,7 +57,14 @@ workflows:
                 bitrise share finish
   test:
     steps:
-      - errcheck: {}
+      - script:
+          title: errcheck
+          inputs:
+            - content: |-
+                #!/bin/bash
+                set -ex
+                go install github.com/kisielk/errcheck@v0.6.3
+                errcheck $BITRISE_GO_PACKAGES
       - golint: {}
       - go-test: {}
       - change-workdir:
