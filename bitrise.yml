@@ -63,7 +63,7 @@ workflows:
             - content: |-
                 #!/bin/bash
                 set -ex
-                go install github.com/kisielk/errcheck@v0.6.3
+                go install github.com/kisielk/errcheck@v1.6.3
                 errcheck $BITRISE_GO_PACKAGES
       - golint: {}
       - go-test: {}
