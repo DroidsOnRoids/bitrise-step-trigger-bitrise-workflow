@@ -57,8 +57,24 @@ workflows:
                 bitrise share finish
   test:
     steps:
-      - errcheck: {}
-      - golint: {}
+      - script:
+          title: errcheck
+          inputs:
+            - content: |-
+                #!/bin/bash
+                set -ex
+                go install github.com/kisielk/errcheck@v1.9.0
+                export PATH="$PATH:$(go env GOPATH)/bin"
+                errcheck ./...
+      - script:
+          title: golint
+          inputs:
+            - content: |-
+                #!/bin/bash
+                set -ex
+                go install golang.org/x/lint/golint@latest
+                export PATH="$PATH:$(go env GOPATH)/bin"
+                golint -set_exit_status $(go list ./... | grep -v /vendor/)
       - go-test: {}
       - change-workdir:
           title: Switch working dir to test / _tmp dir

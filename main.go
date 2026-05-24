@@ -47,7 +47,7 @@ func main() {
 
 	log.Infof("Build Trigger status: %s", responseModel.Status)
 
-	if responseModel.Message != "ok" {
+	if responseModel.Message != "ok" && responseModel.Message != "pending" {
 		log.Errorf("Build not triggered, status: %s", responseModel.Message)
 		os.Exit(4)
 	}
